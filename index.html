@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이밀솔루션 | High-Reliability PCB Design & Simulation Partner</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-blue {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 overflow-x-hidden">
+
+    <!-- Header/GNB -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-5">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+            <!-- Brand Logo -->
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <div class="relative w-16 h-10 flex items-center justify-center bg-white rounded-lg shadow-lg group-hover:scale-105 transition-transform">
+                  <img src="./img/logo_IMIL.png" alt="회사 로고" />
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-lg font-black tracking-tight text-white transition-colors duration-300" id="logo-text">아이밀솔루션</span>
+                    <span class="text-[10px] tracking-widest text-blue-400 font-bold uppercase -mt-1">IMIL SOLUTION</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium">
+                <a href="#intro" class="nav-link text-gray-300 hover:text-white transition-colors">회사소개</a>
+                <a href="#competencies" class="nav-link text-gray-300 hover:text-white transition-colors">핵심역량</a>
+                <a href="#simulation" class="nav-link text-gray-300 hover:text-white transition-colors">시뮬레이션</a>
+                <a href="#industries" class="nav-link text-gray-300 hover:text-white transition-colors">주요분야</a>
+                <a href="#process" class="nav-link text-gray-300 hover:text-white transition-colors">업무프로세스</a>
+                <a href="#company-info" class="nav-link text-gray-300 hover:text-white transition-colors">기업정보</a>
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-full shadow-lg hover:shadow-blue-500/20 transition-all duration-300 transform hover:-translate-y-0.5">문의하기</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none" aria-label="Toggle Menu">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden lg:hidden fixed top-0 left-0 w-full h-screen bg-slate-950/95 backdrop-blur-lg flex flex-col justify-center items-center space-y-8 text-xl font-semibold z-40">
+            <a href="#intro" class="mobile-link text-gray-300 hover:text-white transition-colors">회사소개</a>
+            <a href="#competencies" class="mobile-link text-gray-300 hover:text-white transition-colors">핵심역량</a>
+            <a href="#simulation" class="mobile-link text-gray-300 hover:text-white transition-colors">시뮬레이션</a>
+            <a href="#industries" class="mobile-link text-gray-300 hover:text-white transition-colors">주요분야</a>
+            <a href="#process" class="mobile-link text-gray-300 hover:text-white transition-colors">업무프로세스</a>
+            <a href="#company-info" class="mobile-link text-gray-300 hover:text-white transition-colors">기업정보</a>
+            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-full shadow-lg transition-all duration-300">문의하기</a>
+        </div>
+    </header>
+
+    <!-- [첫 섹션] Hero Cover Screen -->
+    <section id="hero" class="relative h-screen min-h-[600px] flex items-center justify-center bg-slate-950 overflow-hidden">
+        <!-- Technical Network / Aerospace PCB Background Image -->
+        <div class="absolute inset-0 z-0 flex justify-center bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(15,23,42,1)_100%)]">
+            <img src="./img/satellite.png?auto=format&fit=crop&w=1920&q=80" 
+                 alt="Aerospace high tech electronics" 
+                 class="w-full max-w-7xl h-full object-cover opacity-90 scale-105 animate-[pulse_8s_infinite_alternate]"
+                 onerror="this.src='https://placehold.co/1920x1080/0f172a/3b82f6?text=High-Reliability+Electronics'">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-750/70 to-slate-750/50"></div>
+            <!-- Tech Circuit Grid Lines SVG Overlay for Tech Vibe -->
+            <div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 text-center text-white flex flex-col items-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-400 text-m font-semibold tracking-wider uppercase mb-6" data-aos="fade-up">
+                <span class="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
+                B2B Engineering Expert
+            </div>
+            
+            <p class="text-lg md:text-2xl font-light text-blue-200 tracking-widest mb-4 uppercase" data-aos="fade-up" data-aos-delay="100">
+                High-Reliability PCB Design & Analysis Partner
+            </p>
+            
+            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight" style="line-height: 1.2;" data-aos="fade-up" data-aos-delay="200">
+                <span class="block text-slate-100">혁신을 현실로 만드는</span>
+                <span class="bg-gradient-to-r from-blue-900 to-sky-600 bg-clip-text text-transparent">아이밀솔루션</span>
+            </h1>
+
+            <p class="max-w-2xl text-slate-400 text-sm md:text-lg font-normal mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="300">
+                우주항공, 방위산업 등 극한의 신뢰성이 요구되는 전자기기 개발을 위한
+                <br>
+                최고의 하이엔드 PCB 설계 및 해석 전문 엔지니어링 파트너입니다.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-aos="fade-up" data-aos-delay="400">
+                <a href="#intro" class="w-full sm:w-48 text-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-blue-500/30 transition-all duration-300">
+                    서비스 알아보기
+                </a>
+                <a href="#contact" class="w-full sm:w-48 text-center px-8 py-4 bg-slate-900/80 hover:bg-slate-800/80 text-white font-semibold rounded-lg border border-slate-700 hover:border-slate-500 transition-all duration-300">
+                    서비스 상담
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+            <a href="#intro" class="text-slate-400 hover:text-white transition-colors" aria-label="Scroll Down">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- [섹션2] Intro - 설계가 결과를 결정합니다 -->
+    <section id="intro" class="py-24 md:py-32 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Text Area (Left) -->
+                <div data-aos="fade-right">
+                    <div class="w-12 h-1 bg-blue-600 mb-6"></div>
+                    <span class="text-blue-600 font-bold text-m uppercase tracking-wider block mb-2">비즈니스 철학과 전략</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-6" style="line-height: 1.2;">
+                        복잡한 전자시스템의 성공은<br>
+                        <span class="text-blue-600">설계 단계에서 결정됩니다.</span>
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        아이밀솔루션은 <strong>고속 신호 설계(High-Speed PCB Design)</strong>와 <strong>PI/SI 해석</strong> 분야의 압도적인 전문성을 바탕으로 최고의 무결성을 보장합니다.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed mb-8">
+                        <strong>우주항공, 방위산업, 첨단 통신기기, 정밀 의료기기</strong> 등 가혹한 환경에서도 높은 신뢰성이 요구되는 고난도 전자제품 개발의 전 과정에 밀착 동행합니다. 고객사가 직면한 핵심 기술 과제를 입체적으로 분석하여 실질적인 해결책을 제시합니다.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 border-t border-slate-100 pt-8">
+                        <div>
+                            <p class="text-3xl font-extrabold text-slate-900">100%</p>
+                            <p class="text-xs text-slate-500 mt-1">프로젝트 신뢰성 타겟</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-extrabold text-slate-900">최적화</p>
+                            <p class="text-xs text-slate-500 mt-1">맞춤형 엔지니어링 지원</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Area (Right) -->
+                <div class="relative group" data-aos="fade-left">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-500 to-sky-500 rounded-2xl opacity-10 blur-xl"></div>
+                    <div class="relative bg-slate-100 rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
+                        <img src="./img/IMIL_PCB.png?auto=format&fit=crop&w=800&q=80"
+                             alt="Electronic circuit engineering process" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/800x600/e2e8f0/1e293b?text=Electronic+Engineering'">
+                        <!-- overlay -->
+                        <div class="absolute inset-0 bg-slate-950/30 group-hover:bg-slate-950/0 transition"></div>
+                        <!-- Floating Tech Card -->
+                        <div class="absolute bottom-6 left-6 right-6 glassmorphism p-5 rounded-xl border border-white/20 shadow-lg flex items-center justify-between">
+                            <div>
+                                <h4 class="font-bold text-slate-950 text-sm">High-Speed Design</h4>
+                                <p class="text-xs text-slate-600 mt-0.5">최첨단 정밀 회로 시뮬레이션 지원</p>
+                            </div>
+                            <span class="bg-blue-600 text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [섹션3] Experience - 경험이 품질을 만듭니다 -->
+    <section class="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Visual Area (Left) -->
+                <div class="relative group order-2 lg:order-1" data-aos="fade-right">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-sky-400 to-blue-600 rounded-2xl opacity-10 blur-xl"></div>
+                    <div class="relative bg-slate-100 rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
+                        <img src="./img/PCB_assembly.png?auto=format&fit=crop&w=800&q=80"
+                             alt="Advanced technology manufacturing control" 
+                             class="w-full h-full object-cover"
+                             onerror="this.src='https://placehold.co/800x600/e2e8f0/1e293b?text=High-Reliability+PCB'">
+                        <!-- overlay -->
+                        <div class="absolute inset-0 bg-slate-950/30 group-hover:bg-slate-950/0 transition"></div>
+                        <!-- Floating Tech Badge -->
+                        <div class="absolute top-6 left-6 bg-slate-900/90 text-white px-4 py-2 rounded-lg text-xs font-semibold tracking-wider flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                            2018년 설립
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Area (Right) -->
+                <div class="order-1 lg:order-2" data-aos="fade-left">
+                    <div class="w-12 h-1 bg-blue-600 mb-6"></div>
+                    <span class="text-blue-600 font-bold text-m uppercase tracking-wider block mb-2">입증된 실적</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-6" style="line-height: 1.2;">
+                        복잡한 전자시스템 개발,<br>
+                        <span class="text-blue-600">경험이 독보적인 품질을 만듭니다.</span>
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        현대의 첨단 전자제품은 복잡한 다층 회로 구조와 기가헤르츠(GHz) 단위의 광대역 주파수 신호 간섭으로 인해, 단순 Layout 설계만으로는 작동시킬 수 없습니다.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed mb-8">
+                        아이밀솔루션은 단순 PCB 아트워크를 넘어 설계 초기 단계부터 신호 및 전력 무결성(SI/PI), 생산성(DFM), 조립성(DFA)을 통합 관리합니다.
+                        <br>
+                        다년간 누적된 방산/우주 분야의 검증된 노하우와 제조 네트워크를 기반으로 병목 구간을 신속하게 찾아내어 불필요한 시행착오 비용을 원천 차단합니다.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">토탈 엔지니어링 패키지</h4>
+                            <p class="text-xs text-slate-500 mt-0.5">설계 검토부터 시뮬레이션, 양산 준비까지 원스톱 검증</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [섹션4] Core Competencies - High Speed PCB Design -->
+    <section id="competencies" class="py-24 md:py-32 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                <span class="text-blue-600 font-bold text-m uppercase tracking-wider block mb-2">고속 신호 설계</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">High-Speed PCB Design</h2>
+                <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                    초고속 디지털 신호, 고전력, 미세 임피던스 등을 완벽히 통제하는
+                    <br>
+                    고성능 회로 설계 전문 기술을 보유하고 있습니다.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Competency details (Left) -->
+                <div class="space-y-6" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-4">초고속 고성능 디지털 인터페이스 최적화</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        현대의 첨단 PCB 보드는 라우팅 선폭과 간격, 비아(Via) 구조 자체가 소자의 역할을 합니다.
+                        아이밀솔루션은 축적된 핵심 기술을 바탕으로 엄격한 제약 조건을 준수하는 완벽한 설계를 달성합니다.
+                    </p>
+
+                    <!-- Tech Bullet Items -->
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="p-5 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 hover:shadow-md transition-all">
+                            <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 mb-3">
+                                <span class="text-xs font-black">DDR</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">DDR Memory</h4>
+                            <p class="text-xs text-slate-500">초고속 DDR3, DDR4, LPDDR 계열 고밀도 배선 매칭</p>
+                        </div>
+
+                        <div class="p-5 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 hover:shadow-md transition-all">
+                            <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 mb-3">
+                                <span class="text-xs font-black">PCIe</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">PCI Express</h4>
+                            <p class="text-xs text-slate-500">PCIe Gen3, Gen4, Gen5 고속 레인 무결성 매치업</p>
+                        </div>
+
+                        <div class="p-5 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 hover:shadow-md transition-all">
+                            <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 mb-3">
+                                <span class="text-xs font-black">MIXED SIGNAL</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">Mixed Signal</h4>
+                            <p class="text-xs text-slate-500">아날로그·디지털 도메인 최적 분리를 통한 노이즈 억제 및 신호 무결성 확보</p>
+                        </div>
+
+                        <div class="p-5 rounded-xl bg-slate-50 border border-slate-100 hover:border-blue-200 hover:shadow-md transition-all">
+                            <div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 mb-3">
+                                <span class="text-xs font-black">RF</span>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm mb-1">RF Circuit</h4>
+                            <p class="text-xs text-slate-500">고주파 무선 통신 모듈 및 임피던스 정밀 제어</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual (Right) -->
+                <div class="relative group" data-aos="fade-left">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl opacity-10 blur-xl"></div>
+                    <div class="relative bg-slate-900 rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] flex items-center justify-center">
+                        <img src="./img/high-speed.png?auto=format&fit=crop&w=800&q=80" 
+                             alt="High frequency microchip layout design representation" 
+                             class="w-full h-full object-cover opacity-100 brightness-110"
+                             onerror="this.src='https://placehold.co/800x600/0f172a/3b82f6?text=High-Speed+PCB+Design'">
+                        <!-- overlay -->
+                        <div class="absolute inset-0 bg-slate-950/30 group-hover:bg-slate-950/0 transition"></div>
+                        <!-- Absolute Tech Graph Overlaid -->
+                        <div class="absolute top-4 right-4 bg-blue-600/90 text-white text-[11px] font-mono px-3 py-1 rounded-full uppercase tracking-widest backdrop-blur-sm">
+                            Expertised
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [섹션5] PI / SI Simulation -->
+    <section id="simulation" class="py-24 md:py-32 bg-slate-950 text-white relative overflow-hidden">
+        <!-- Subtle Vector Graphic Overlay -->
+        <div class="absolute inset-0 z-0 opacity-5">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0,100 Q 300,300 600,100 T 1200,400 T 1800,200" fill="none" stroke="#3b82f6" stroke-width="4"></path>
+                <path d="M 0,300 Q 400,100 800,250 T 1600,100" fill="none" stroke="#22d3ee" stroke-width="3"></path>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Visual (Left) -->
+                <div class="relative group order-2 lg:order-1" data-aos="fade-right">
+                    <div class="absolute -inset-4 bg-blue-500 rounded-2xl opacity-20 blur-xl"></div>
+                    <div class="relative bg-slate-900/20 rounded-2xl overflow-hidden shadow-2xl border border-slate-800 aspect-[4/3]">
+                        <img src="./img/pi-si_simulation.png?auto=format&fit=crop&w=800&q=80" 
+                             alt="PI/SI Simulation graphics" 
+                             class="w-full h-full object-cover opacity-100 brightness-110"
+                             onerror="this.src='https://placehold.co/800x600/0f172a/0ea5e9?text=PI/SI+Simulation'">
+                        <!-- overlay -->
+                        <div class="absolute inset-0 bg-slate-950/30 group-hover:bg-slate-950/0 transition"></div>
+                        <!-- Graph overlay simulating SI/PI output -->
+                        <!-- <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div> -->
+                    </div>
+                </div>
+
+                <!-- Text Area (Right) -->
+                <div class="order-1 lg:order-2" data-aos="fade-left">
+                    <span class="text-blue-400 font-bold text-m uppercase tracking-wider block mb-2">신호 해석</span>
+                    <!-- <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight mb-6"> -->
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-6 leading-tight" style="line-height: 1.2;">
+                        PI / SI Analysis<br>
+                        <span class="text-blue-400">설계 초기부터 위험을 예방합니다.</span>
+                    </h2>
+                    <p class="text-slate-400 leading-relaxed mb-8">
+                        제품 개발 과정에서 실물 보드를 제작한 후에 오류를 발견하게 되면 복구하기 어려운 비용과 막대한 일정 지연이 뒤따릅니다.
+                        <br>
+                        아이밀솔루션은 가상의 회로 시뮬레이션 프로세스를 전진 배치하여 초기 개발부터 신뢰성을 확보합니다.
+                    </p>
+
+                    <!-- Dual Grid Features -->
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-slate-100 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Signal Integrity (SI)
+                            </h4>
+                            <ul class="text-xs text-slate-400 space-y-2 pl-3">
+                                <li>• Signal Reflection</li>
+                                <li>• Timing Margin</li>
+                                <li>• Crosstalk, 노이즈 해석</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-3">
+                            <h4 class="font-bold text-slate-100 flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Power Integrity (PI)
+                            </h4>
+                            <ul class="text-xs text-slate-400 space-y-2 pl-3">
+                                <li>• IR-Drop 분석</li>
+                                <li>• Parasitic 최소화</li>
+                                <li>• 전원 노이즈 차단 디커플링</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- [섹션6] Industries We Serve -->
+<section id="industries" class="py-24 md:py-32 bg-white relative">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+        <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+            <span class="text-blue-600 font-bold text-m uppercase tracking-wider block mb-2">적용 분야</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">Industries We Serve</h2>
+            <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                아이밀솔루션의 무결점 설계 원칙은 높은 안정성이 요구되는 첨단 산업 분야를 지원합니다.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+            <!-- Card 1: Aerospace -->
+            <div class="relative overflow-hidden bg-slate-50 hover:shadow-2xl hover:-translate-y-2 p-8 rounded-2xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group" data-aos="fade-up">
+
+                <!-- background image -->
+                <div class="absolute inset-0 bg-[url('./img/industry-aerospace.png')] bg-cover bg-center"></div>
+                <!-- overlay -->
+                <div class="absolute inset-0 bg-slate-950/50 group-hover:bg-slate-950/10 transition"></div>
+
+                <div class="relative z-10 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6">
+                        <!-- SVG -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.36 1.24.588 1.81l-3.97 2.883a1 1 0 00-.364 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.971-2.883a1 1 0 00-1.17 0l-3.97 2.883c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.98 10.11c-.773-.57-.375-1.81.587-1.81h4.907a1 1 0 00.95-.69l1.519-4.674z"></path>
+                        </svg>
+                    </div>
+
+                    <h4 class="font-bold text-white text-lg mb-2">우주항공 & 위성</h4>
+                    <p class="text-xs text-slate-200 leading-relaxed">
+                        극한의 기온 차와 무중력 등 가혹 조건에서 무결점 작동을 목표로 하는 고신뢰성 보드 설계
+                    </p>
+                </div>
+
+                <span class="relative z-10 text-xs font-bold text-blue-300 block">
+                    Aerospace & Satellite
+                </span>
+            </div>
+
+
+            <!-- Card 2: Defense Electronics -->
+            <div class="relative overflow-hidden bg-slate-50 hover:shadow-2xl hover:-translate-y-2 p-8 rounded-2xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="absolute inset-0 bg-[url('./img/industry-defense.png')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-slate-950/50 group-hover:bg-slate-950/10 transition"></div>
+
+                <div class="relative z-10 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6">
+                        <!-- SVG -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+
+                    <h4 class="font-bold text-white text-lg mb-2">방위산업 전자장비</h4>
+                    <p class="text-xs text-slate-200 leading-relaxed">
+                        최고의 정밀도와 내진동, 고신뢰성을 기준으로 군용 및 국가 전략 방어 시스템을 완벽 지원
+                    </p>
+                </div>
+
+                <span class="relative z-10 text-xs font-bold text-emerald-300 block">
+                    Defense Electronics
+                </span>
+            </div>
+
+
+            <!-- Card 3: Industrial Systems -->
+            <div class="relative overflow-hidden bg-slate-50 hover:shadow-2xl hover:-translate-y-2 p-8 rounded-2xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="absolute inset-0 bg-[url('./img/industry-industrial.png')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-slate-950/50 group-hover:bg-slate-950/10 transition"></div>
+
+                <div class="relative z-10 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6">
+                        <!-- SVG -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        </svg>
+                    </div>
+
+                    <h4 class="font-bold text-white text-lg mb-2">산업용 제어 시스템</h4>
+                    <p class="text-xs text-slate-200 leading-relaxed">
+                        스마트 팩토리 및 자동화 제어 환경에서 24시간 안정 동작을 견인하는 신뢰성 설계 인프라 구축
+                    </p>
+                </div>
+
+                <span class="relative z-10 text-xs font-bold text-amber-300 block">
+                    Industrial Systems
+                </span>
+            </div>
+
+
+            <!-- Card 4: Communication Equipment -->
+            <div class="relative overflow-hidden bg-slate-50 hover:shadow-2xl hover:-translate-y-2 p-8 rounded-2xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group" data-aos="fade-up" data-aos-delay="400">
+
+                <div class="absolute inset-0 bg-[url('./img/industry-communication.png')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-slate-950/50 group-hover:bg-slate-950/10 transition"></div>
+
+                <div class="relative z-10 mb-6">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6">
+                        <!-- SVG -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+
+                    <h4 class="font-bold text-white text-lg mb-2">초고속 통신 장비</h4>
+                    <p class="text-xs text-slate-200 leading-relaxed">
+                        Giga-bit 전송률을 지원하는 유무선 back-bone, 라우터, 위성 통신 중계기용 RF 혼합 신호 레이아웃
+                    </p>
+                </div>
+
+                <span class="relative z-10 text-xs font-bold text-violet-300 block">
+                    Communication Equipment
+                </span>
+            </div>
+
+        </div>
+    </div>
+</section>
+    <!-- [섹션7] Why IMIL Soultion -->
+    <section class="py-24 md:py-32 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                <span class="text-blue-600 font-bold text-m uppercase tracking-wider block mb-2">차별화된 가치</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">Why IMIL Solution</h2>
+                <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                    아이밀솔루션은 단순 PCB 용역 대행사가 아닌, 고객과 함께 성공적인 제품을 개발하는
+                    <br>
+                    신뢰의 엔지니어링 파트너입니다.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Competency 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="text-3xl font-extrabold text-blue-500 mb-4">01</div>
+                    <h4 class="font-bold text-slate-900 text-base mb-3">기술적 완성도</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">고속 디지털 시스템 설계에 대한 완벽한 지식과 풍부한 대형 프로젝트 수행 경험을 보유합니다.</p>
+                </div>
+
+                <!-- Competency 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-3xl font-extrabold text-blue-500 mb-4">02</div>
+                    <h4 class="font-bold text-slate-900 text-base mb-3">사전 위험 분석</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">개발 초기부터 시뮬레이션을 통해 잠재 설계 문제를 조기 예방합니다.</p>
+                </div>
+
+                <!-- Competency 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="text-3xl font-extrabold text-blue-500 mb-4">03</div>
+                    <h4 class="font-bold text-slate-900 text-base mb-3">제조 중심 설계</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">PCB 제작 규격 및 SMT 규격에 맞는 최적화된 설계로 양산 제조에 대비합니다.</p>
+                </div>
+
+                <!-- Competency 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-3xl font-extrabold text-blue-500 mb-4">04</div>
+                    <h4 class="font-bold text-slate-900 text-base mb-3">검증된 네트워크</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">최고의 PCB 제작사, SMT 라인 등 전문 기업들과 견고한 협력망이 구축되어 있습니다.</p>
+                </div>
+
+                <!-- Competency 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="text-3xl font-extrabold text-blue-500 mb-4">05</div>
+                    <h4 class="font-bold text-slate-900 text-base mb-3">책임 있는 수행</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">파일 전달에서 그치지 않고 완성 제품의 구동 검증까지 책임있게 함께합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [섹션8] Development Process -->
+    <section id="process" class="py-24 md:py-32 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                <span class="text-blue-600 font-bold text-m uppercase tracking-wider block mb-2">Workflow</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">업무 프로세스</h2>
+                <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                    유연하고도 견고한 6단계 특화 설계 프로세스로 한 치의 오차도 허용치 않는 완성도를 보장합니다.
+                </p>
+            </div>
+
+            <!-- Flow Horizontal Roadmap on Desktop / Vertical Timeline on Mobile -->
+            <div class="relative">
+                <!-- Desktop connecting line -->
+                <div class="hidden lg:block absolute top-[44px] left-[5%] right-[5%] h-1 bg-blue-100 z-0"></div>
+
+                <div class="grid lg:grid-cols-6 gap-8 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center lg:items-start text-center lg:text-left" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-11 h-11 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shadow-lg mb-6 ring-4 ring-blue-50 border-2 border-white">
+                            01
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2">Requirement Analysis</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed px-4 lg:px-0">제품 요구사항 분석 및 철저한 세부 기획 조건 검토</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center lg:items-start text-center lg:text-left" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-11 h-11 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shadow-lg mb-6 ring-4 ring-blue-50 border-2 border-white">
+                            02
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2">Architecture Review</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed px-4 lg:px-0">시스템 구조 식별 및 최적화된 PCB stack-up 검토 설계</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center lg:items-start text-center lg:text-left" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-11 h-11 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shadow-lg mb-6 ring-4 ring-blue-50 border-2 border-white">
+                            03
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2">PCB Design</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed px-4 lg:px-0">Schematic 검토 및 최적화된 부품 배치-Layout 설계</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="flex flex-col items-center lg:items-start text-center lg:text-left" data-aos="fade-up" data-aos-delay="400">
+                        <div class="w-11 h-11 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shadow-lg mb-6 ring-4 ring-blue-50 border-2 border-white">
+                            04
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2">PI / SI Analysis</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed px-4 lg:px-0">해석 툴을 통한 신호 검증</p>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="flex flex-col items-center lg:items-start text-center lg:text-left" data-aos="fade-up" data-aos-delay="500">
+                        <div class="w-11 h-11 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shadow-lg mb-6 ring-4 ring-blue-50 border-2 border-white">
+                            05
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2">Manufacturing Support</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed px-4 lg:px-0">제조를 고려한 설계 및 PCB 제작 가이드</p>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="flex flex-col items-center lg:items-start text-center lg:text-left" data-aos="fade-up" data-aos-delay="600">
+                        <div class="w-11 h-11 rounded-full bg-blue-600 text-white font-bold text-sm flex items-center justify-center shadow-lg mb-6 ring-4 ring-blue-50 border-2 border-white">
+                            06
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2">Final Validation</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed px-4 lg:px-0">완벽한 프로세스 연계 및 사후지원</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [섹션9] Company Information -->
+    <section id="company-info" class="py-24 bg-slate-50 border-t border-slate-100 relative">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid lg:grid-cols-3 gap-12 items-start">
+                <!-- Branding Message Block (Left) -->
+                <div class="space-y-4" data-aos="fade-right">
+                    <p class="text-xs text-slate-500 leading-relaxed max-w-sm">
+                        <br>
+                    </p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-16 h-10 flex items-center justify-center bg-white rounded-lg text-white font-bold">
+                          <img src="./img/logo_IMIL.png" alt="회사 로고" />
+                        </div>
+                        <span class="text-lg font-black tracking-tight text-slate-900">아이밀솔루션</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed max-w-sm">
+                        복잡한 전자 시스템의 고속 디지털 설계에 집중해온 전문 PCB 엔지니어링 기업입니다.
+                    </p>
+                </div>
+
+                <!-- Company Details (Middle) -->
+                <div class="lg:col-span-2 grid sm:grid-cols-2 gap-8 bg-white p-8 md:p-10 rounded-2xl border border-slate-100 shadow-sm" data-aos="fade-left">
+                    <div class="space-y-4">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Company Overview</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <span class="block text-xs text-slate-400">회사명</span>
+                                <span class="text-sm font-semibold text-slate-800">아이밀솔루션 (iMill Solution)</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-400">설립연도</span>
+                                <span class="text-sm font-semibold text-slate-800">2018년</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-400">소재지</span>
+                                <span class="text-sm font-semibold text-slate-800">경기도 성남시 분당구 수내동</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Major Business Fields</h4>
+                        <ul class="space-y-2 text-xs text-slate-600">
+                            <li class="flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-blue-500"></span> High-Speed PCB Layout Design
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-blue-500"></span> Signal Integrity (SI) Analysis
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-blue-500"></span> Power Integrity (PI) Analysis
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-blue-500"></span> Design Verification & DFM/DFA Review
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-1 h-1 rounded-full bg-blue-500"></span> Prototyping & SMT Production Support
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- [섹션10] Contact Us & Footer -->
+    <section id="contact" class="bg-gradient-blue text-slate-100 py-24 md:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-10">
+            <!-- Tech map background pattern -->
+            <div class="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-16 items-center">
+                <!-- Text / Slogan Area (Left) -->
+                <div class="space-y-8" data-aos="fade-right">
+                    <span class="text-blue-400 font-bold text-m uppercase tracking-wider block">Get In Touch</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-50 leading-tight" style="line-height: 1.2;">
+                        고난도 전자시스템 개발의<br>믿을 수 있는 파트너
+                    </h2>
+                    <p class="text-slate-400 leading-relaxed text-sm md:text-base">
+                        복잡한 초고속 PCB 설계의 고충, 불확실한 신호 불량 원인 규명, 방위산업용 특화 장치 개발 등
+                        <br>
+                        어떤 기술 과제에 대해서도 신뢰할 수 있는 전문가가 명쾌한 해결책을 제시해 드립니다.
+                    </p>
+
+                    <div class="space-y-4 pt-4 border-t border-slate-800">
+                        <!-- Address -->
+                        <div class="flex items-start gap-3">
+                            <div class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-sm text-slate-300 leading-relaxed">
+                                경기도 성남시 분당구 황새울로200번길 36 (동부루트빌딩 6층 620호)
+                            </p>
+                        </div>
+                        <!-- Email -->
+                        <div class="flex items-start gap-3">
+                            <div class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m0 8V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2h14a2 2 0 002-2z"/>
+                                </svg>
+                            </div>
+                            <p class="text-sm text-slate-300">
+                                contact@imilsolution.com
+                            </p>
+                        </div>
+                        <!-- Phone -->
+                        <div class="flex items-start gap-3">
+                            <div class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M3 5a2 2 0 012-2h2.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-1.242.621a11.042 11.042 0 005.516 5.516l.621-1.242a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                            </div>
+                            <p class="text-sm text-slate-300">
+                                010-7449-2714
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="text-slate-500 text-xs italic">
+                        Engineering Excellence for Reliable Electronics
+                    </div>
+                </div>
+
+                <!-- Image Area / Tech Consultation -->
+                <div class="relative" data-aos="fade-left">
+
+                    <div class="bg-slate-900/80 backdrop-blur-md p-4 md:p-6 rounded-2xl border border-slate-800 shadow-2xl">
+
+                        <!-- Image (800px width 기준) -->
+                        <img src="./img/contact.png"
+                             alt="Technical consulting and PCB engineering review"
+                             class="w-full max-w-[360px] rounded-xl shadow-lg object-cover"
+                             onerror="this.src='https://placehold.co/800x600/0f172a/94a3b8?text=Technical+Consulting'">
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="mt-20 pt-8 border-t border-slate-800/60 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <p>© 2026 iMill Solution. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-slate-300">이용약관</a>
+                    <a href="#" class="hover:text-slate-300">개인정보처리방침</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AOS Library Script Load -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-out-quad',
+            offset: 120
+        });
+
+        // Sticky Header / GNB Control on Scroll
+        const header = document.getElementById('main-header');
+        const logoText = document.getElementById('logo-text');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('glassmorphism', 'shadow-md', 'py-3');
+                header.classList.remove('py-5');
+                logoText.classList.remove('text-white');
+                logoText.classList.add('text-slate-900');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-gray-300');
+                    link.classList.add('text-slate-600', 'hover:text-blue-600');
+                });
+            } else {
+                header.classList.remove('glassmorphism', 'shadow-md', 'py-3');
+                header.classList.add('py-5');
+                logoText.classList.add('text-white');
+                logoText.classList.remove('text-slate-900');
+                navLinks.forEach(link => {
+                    link.classList.add('text-gray-300');
+                    link.classList.remove('text-slate-600', 'hover:text-blue-600');
+                });
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                // Menu Closed State
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                // Menu Open State
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            });
+        });
+
+        // Contact Form Callback
+        function handleFormSubmit() {
+            const form = document.getElementById('consulting-form');
+            const successMsg = document.getElementById('success-msg');
+            
+            // Simple display feedback
+            form.classList.add('opacity-50', 'pointer-events-none');
+            successMsg.classList.remove('hidden');
+            
+            setTimeout(() => {
+                form.reset();
+                form.classList.remove('opacity-50', 'pointer-events-none');
+                successMsg.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
